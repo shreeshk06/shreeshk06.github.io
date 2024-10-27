@@ -49,15 +49,19 @@
             color: #ff6347;
         }
 
-        /* Main Title (Center-Aligned) */
+        /* Main Title (Center-Aligned with custom look) */
         .title-container {
             text-align: center;
             margin-top: 50px;
+            font-size: 60px;
+            color: #333;
         }
 
         .title-container h1 {
-            font-size: 80px;
+            display: inline-block;
             color: #333;
+            font-family: "Comic Sans MS", cursive;
+            text-shadow: 2px 2px #aaa;
         }
 
         .title-container h1 span {
@@ -69,6 +73,7 @@
             font-size: 24px;
             margin-top: 20px;
             color: #555;
+            font-family: Arial, sans-serif;
         }
 
         /* Manga list section */
@@ -78,23 +83,38 @@
         }
 
         .manga-section ul {
-            display: inline-block;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .manga-section ul li {
-            padding: 10px 0;
-            font-size: 18px;
+            width: 150px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .manga-section ul li:hover {
+            transform: scale(1.05);
+        }
+
+        .manga-section ul li img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
         }
 
         .manga-section ul li a {
-            font-size: 22px;
-            color: #ff6347;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .manga-section ul li a:hover {
+            font-size: 18px;
             color: #333;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -114,7 +134,6 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Manga</a></li>
-                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -129,7 +148,11 @@
     <section class="manga-section">
         <h3>Chapters</h3>
         <ul>
-            <li><a href="#">Chapter 1: The Protagonist</a></li>
+            <li>
+                <img src="chapter1.png" alt="Chapter 1">
+                <a href="#">Chapter 1: The Protagonist</a>
+            </li>
+            <!-- Additional chapters can be added here -->
         </ul>
     </section>
 
