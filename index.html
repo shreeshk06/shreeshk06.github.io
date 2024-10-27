@@ -16,13 +16,13 @@
         }
 
         body {
-            background-color: #DC143C;
+            background-color: #f9f9f9;
             line-height: 1.6;
         }
 
         /* Header */
         header {
-            background-color: #add8e6;
+            background-color: #333;
             color: white;
             padding: 10px 0;
             text-align: center;
@@ -117,6 +117,24 @@
             font-weight: bold;
         }
 
+        /* Chapter details section */
+        .chapter-details {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .chapter-details h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .chapter-details p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -128,7 +146,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav>
             <ul>
@@ -138,28 +155,44 @@
         </nav>
     </header>
 
-    <!-- Main Title Section -->
     <div class="title-container">
         <h1>That <span>UNBEATABLE</span></h1>
         <h2>An Original By Shreesh Kulkarni</h2>
     </div>
 
-    <!-- Manga List Section -->
     <section class="manga-section">
         <h3>Chapters</h3>
         <ul>
             <li>
                 <img src="chapter1.png" alt="Chapter 1">
-                <a href="#">Chapter 1: The Protagonist</a>
+                <a href="chapter1.html">Chapter 1: Imperfect Start</a>
             </li>
-            <!-- Additional chapters can be added here -->
-        </ul>
+            </ul>
     </section>
 
-    <!-- Footer -->
+    <section class="chapter-details" style="display: none;">
+        <h2>Imperfect Start</h2>
+        <p>New Chapters Coming Soon</p>
+    </section>
+
     <footer>
         <p>&copy; 2024 Shreesh Kulkarni. All Rights Reserved.</p>
         <p>This manga and content are copyright-protected. Unauthorized use or distribution is strictly prohibited.</p>
     </footer>
+
+    <script>
+        // JavaScript to show chapter details on click
+        const mangaList = document.querySelector('.manga-section ul');
+        const chapterDetails = document.querySelector('.chapter-details');
+
+        mangaList.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                // Show chapter details
+                chapterDetails.style.display = 'block';
+
+                // You can add more specific logic here to display different chapter details based on the clicked link
+            }
+        });
+    </script>
 </body>
 </html>
