@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>That UNBEATABLE - Manga Website</title>
-    <style>
+    <style>                                                                      
         /* General reset and body styling */
         body, h1, h2, h3, p, ul, li, a {
             margin: 0;
@@ -42,6 +42,7 @@
             color: white;
             text-transform: uppercase;
             font-weight: bold;
+            cursor: pointer;
             transition: color 0.3s ease;
         }
 
@@ -78,8 +79,15 @@
 
         /* Manga list section */
         .manga-section {
+            display: none;
             text-align: center;
             margin: 40px 0;
+        }
+
+        .manga-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #555;
         }
 
         .manga-section ul {
@@ -117,24 +125,6 @@
             font-weight: bold;
         }
 
-        /* Chapter details section */
-        .chapter-details {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .chapter-details h2 {
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .chapter-details p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -146,52 +136,51 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Manga</a></li>
+                <li><a id="home-tab" href="#">Home</a></li>
+                <li><a id="manga-tab" href="#">Manga</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Main Title Section -->
     <div class="title-container">
         <h1>That <span>UNBEATABLE</span></h1>
         <h2>An Original By Shreesh Kulkarni</h2>
     </div>
 
-    <section class="manga-section">
-        <h3>Chapters</h3>
+    <!-- Manga List Section -->
+    <section class="manga-section" id="manga-section">
+        <h3>New Chapters Coming Soon</h3>
         <ul>
             <li>
                 <img src="chapter1.png" alt="Chapter 1">
                 <a href="chapter1.html">Chapter 1: Imperfect Start</a>
             </li>
-            </ul>
+        </ul>
     </section>
 
-    <section class="chapter-details" style="display: none;">
-        <h2>Imperfect Start</h2>
-        <p>New Chapters Coming Soon</p>
-    </section>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Shreesh Kulkarni. All Rights Reserved.</p>
         <p>This manga and content are copyright-protected. Unauthorized use or distribution is strictly prohibited.</p>
     </footer>
 
     <script>
-        // JavaScript to show chapter details on click
-        const mangaList = document.querySelector('.manga-section ul');
-        const chapterDetails = document.querySelector('.chapter-details');
+        // JavaScript to show manga section on click
+        document.getElementById('manga-tab').addEventListener('click', function() {
+            // Hide the title section and show the manga section
+            document.querySelector('.title-container').style.display = 'none';
+            document.getElementById('manga-section').style.display = 'block';
+        });
 
-        mangaList.addEventListener('click', (event) => {
-            if (event.target.tagName === 'A') {
-                // Show chapter details
-                chapterDetails.style.display = 'block';
-
-                // You can add more specific logic here to display different chapter details based on the clicked link
-            }
+        // Click "Home" to reset view
+        document.getElementById('home-tab').addEventListener('click', function() {
+            document.querySelector('.title-container').style.display = 'block';
+            document.getElementById('manga-section').style.display = 'none';
         });
     </script>
 </body>
