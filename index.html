@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>That UNBEATABLE - Manga Website</title>
-    <style>                                                                      
-        /* General reset and body styling */
+    <style>
+        /* General styling */
         body, h1, h2, h3, p, ul, li, a {
             margin: 0;
             padding: 0;
@@ -14,120 +14,90 @@
             font-family: Arial, sans-serif;
             color: #333;
         }
-
         body {
             background-color: #f9f9f9;
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
-
-        /* Header */
         header {
             background-color: #333;
             color: white;
             padding: 10px 0;
             text-align: center;
         }
-
         header nav ul {
-            list-style: none;
             display: flex;
             justify-content: center;
         }
-
         header nav ul li {
             margin: 0 20px;
         }
-
         header nav ul li a {
             color: white;
             text-transform: uppercase;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
         }
 
-        header nav ul li a:hover {
-            color: #ff6347;
-        }
-
-        /* Main Title (Center-Aligned with custom look) */
-        .title-container {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 60px;
-            color: #333;
-            flex-grow: 1;
-        }
-
-        .title-container h1 {
-            display: inline-block;
-            color: #333;
-            font-family: "Comic Sans MS", cursive;
-            text-shadow: 2px 2px #aaa;
-        }
-
-        .title-container h1 span {
-            font-weight: bold;
-            color: red;
-        }
-
-        .title-container h2 {
-            font-size: 24px;
+        /* About Section */
+        .about-section {
+            padding: 20px;
             margin-top: 20px;
-            color: #555;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Manga list section */
-        .manga-section {
-            display: none;
-            text-align: center;
-            margin: 40px 0;
-            flex-grow: 1;
-        }
-
-        .manga-section h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .manga-section ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .manga-section ul li {
-            width: 150px;
-            background-color: #f0f0f0;
-            padding: 10px;
+            background-color: #fff;
             border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 40px auto;
             text-align: center;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
 
-        .manga-section ul li:hover {
-            transform: scale(1.05);
-        }
-
-        .manga-section ul li img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 10px;
-        }
-
-        .manga-section ul li a {
-            font-size: 18px;
-            color: #333;
+        /* Floating Feedback Button */
+        .feedback-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             font-weight: bold;
+        }
+
+        /* Feedback Form Popup */
+        .feedback-form {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .feedback-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .feedback-form input[type="text"], .feedback-form input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .feedback-form button {
+            padding: 8px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .feedback-form button:hover {
+            background-color: #555;
         }
 
         /* Footer */
@@ -136,7 +106,7 @@
             padding: 20px;
             background-color: #333;
             color: white;
-            margin-top: auto;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -151,22 +121,30 @@
         </nav>
     </header>
 
-    <!-- Main Title Section -->
-    <div class="title-container">
-        <h1>That <span>UNBEATABLE</span></h1>
-        <h2>An Original By Shreesh Kulkarni</h2>
+    <!-- About Section -->
+    <div class="about-section">
+        <h2>About That UNBEATABLE</h2>
+        <p>Original Story by Shreesh Kulkarni<br><br>
+        In the first Volume of this series, we are introduced to a thrilling and mysterious journey alongside two brothers who find themselves stepping into the unknown...<br><br>
+        (Add more of the text content you provided here.)<br><br>
+        Written & Created By Shreesh Kulkarni</p>
     </div>
 
-    <!-- Manga List Section -->
-    <section class="manga-section" id="manga-section">
-        <h3>New Chapters Coming Soon</h3>
-        <ul>
-            <li>
-                <img src="chapter1.png" alt="Chapter 1">
-                <a href="chapter1.html">Chapter 1: Imperfect Start</a>
-            </li>
-        </ul>
-    </section>
+    <!-- Floating Feedback Button -->
+    <button class="feedback-button">Feedback</button>
+
+    <!-- Feedback Form Popup -->
+    <div class="feedback-form" id="feedback-form">
+        <form onsubmit="return validateFeedback()">
+            <label for="feedback">Feedback</label>
+            <input type="text" id="feedback" placeholder="Enter your feedback">
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -175,19 +153,22 @@
     </footer>
 
     <script>
-        // JavaScript to show manga section on click
-        document.getElementById('manga-tab').addEventListener('click', function() {
-            // Hide the title section and show the manga section
-            document.querySelector('.title-container').style.display = 'none';
-            document.getElementById('manga-section').style.display = 'block';
+        // JavaScript to toggle feedback form visibility
+        document.querySelector('.feedback-button').addEventListener('click', function() {
+            const feedbackForm = document.getElementById('feedback-form');
+            feedbackForm.style.display = feedbackForm.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Click "Home" to reset view
-        document.getElementById('home-tab').addEventListener('click', function() {
-            document.querySelector('.title-container').style.display = 'block';
-            document.getElementById('manga-section').style.display = 'none';
-        });
+        // Validation function to ensure email is entered
+        function validateFeedback() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert('Please enter your email.');
+                return false;
+            }
+            alert('Feedback submitted. Thank you!');
+            return true; // You can replace this alert with form submission handling
+        }
     </script>
 </body>
 </html>
-
