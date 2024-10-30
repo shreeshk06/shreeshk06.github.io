@@ -18,6 +18,9 @@
         body {
             background-color: #f9f9f9;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Header */
@@ -56,6 +59,7 @@
             margin-top: 50px;
             font-size: 60px;
             color: #333;
+            flex-grow: 1;
         }
 
         .title-container h1 {
@@ -82,6 +86,7 @@
             display: none;
             text-align: center;
             margin: 40px 0;
+            flex-grow: 1;
         }
 
         .manga-section h3 {
@@ -131,7 +136,7 @@
             padding: 20px;
             background-color: #333;
             color: white;
-            margin-top: 50px;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -185,3 +190,4 @@
     </script>
 </body>
 </html>
+
