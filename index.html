@@ -36,6 +36,60 @@
             text-transform: uppercase;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        header nav ul li a:hover {
+            color: #ff6347;
+        }
+
+        /* Main Title (Home Section) */
+        .title-container {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 60px;
+            color: #333;
+        }
+        .title-container h1 {
+            color: #333;
+            font-family: "Comic Sans MS", cursive;
+            text-shadow: 2px 2px #aaa;
+        }
+        .title-container h1 span {
+            color: red;
+        }
+        .title-container h2 {
+            font-size: 24px;
+            color: #555;
+        }
+
+        /* Manga Section */
+        .manga-section, .about-section {
+            display: none;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .manga-section ul {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .manga-section ul li {
+            width: 150px;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .manga-section ul li img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .manga-section ul li a {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
         }
 
         /* About Section */
@@ -53,8 +107,8 @@
         /* Floating Feedback Button */
         .feedback-button {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            left: 20px;
+            top: 50%;
             padding: 10px 20px;
             background-color: #ff6347;
             color: white;
@@ -69,7 +123,7 @@
             display: none;
             position: fixed;
             bottom: 100px;
-            right: 20px;
+            left: 20px;
             width: 300px;
             padding: 20px;
             background-color: white;
@@ -96,9 +150,6 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .feedback-form button:hover {
-            background-color: #555;
-        }
 
         /* Footer */
         footer {
@@ -117,18 +168,38 @@
             <ul>
                 <li><a id="home-tab" href="#">Home</a></li>
                 <li><a id="manga-tab" href="#">Manga</a></li>
+                <li><a id="about-tab" href="#">About</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- About Section -->
-    <div class="about-section">
-        <h2>About That UNBEATABLE</h2>
-        <p>Original Story by Shreesh Kulkarni<br><br>
-        In the first Volume of this series, we are introduced to a thrilling and mysterious journey alongside two brothers who find themselves stepping into the unknown...<br><br>
-        (Add more of the text content you provided here.)<br><br>
-        Written & Created By Shreesh Kulkarni</p>
+    <!-- Home Section -->
+    <div class="title-container" id="home-section">
+        <h1>That <span>UNBEATABLE</span></h1>
+        <h2>An Original By Shreesh Kulkarni</h2>
     </div>
+
+    <!-- Manga Section -->
+    <section class="manga-section" id="manga-section">
+        <h3>New Chapters Coming Soon</h3>
+        <ul>
+            <li>
+                <img src="chapter1.png" alt="Chapter 1">
+                <a href="chapter1.html">Chapter 1: Imperfect Start</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about-section">
+        <h2>About That UNBEATABLE</h2>
+<p>THAT UNBEATABLE : Original Story by Shreesh Kulkarni #ThatUnbeatable</p>
+<p>In a Similar Unfair World, we are introduced to two brothers who are living normally but find themselves stepping into the unknown. From the very beginning, We will have the Tension. With the weight of their New Responsibilities, they start to uncover the hidden depths of their extraordinary powers, but they soon realize that these abilities are not fully within their control And their Powers are Elemental. Each new challenge brings them closer to understanding their true potential, yet also reveals dangerous truths that have been lurking in the shadows for far longer than they could have imagined. First they Discover their Powers but the thing Important for them is to Find their Cover. These brothers Especially have the crave for Monarchy. The future holds even greater mysteries—cryptic visions, strange symbols, and ancient prophecies all pointing toward a looming conflict that is far beyond their comprehension.</p>
+<p>However, there are many things in this Chapter/Volume that might not make complete sense right now. You may come across moments that seem confusing or details that feel incomplete, but trust me, these seemingly small mysteries are carefully placed pieces of a much larger puzzle. As we move forward in the story and dive into the upcoming chapters, these early clues will begin to unfold. The more you read, the more everything will fall into place, and you’ll find yourself not only understanding these mysteries but becoming personally invested in them. As the brothers delve deeper into their destiny, they realize their powers are tied not just to the present but to future events—events that may very well determine the fate of entire worlds. Forgotten relics, hidden symbols, and unexplained phenomena offer glimpses into what lies ahead, yet the truth remains elusive. Together, they must learn to harness their newfound abilities and confront the dangers of both the present and the future.</p>
+<p>This journey is not just about power; it’s about self-discovery, prophecy, and a path filled with adventure, danger, and a mysterious fate awaiting them at every turn. As the story unfolds, what initially seems confusing will reveal its purpose, drawing you further into the complex world this team inhabits. This Story is Not just about powers & Monarchy but also for one to find his/her's Ultimate Purpose. As the author, I want to take a moment to personally invite you to immerse yourself in this unfolding tale. Each twist, turn, and hidden secret is a vital part of a larger, intricate world that will only become clearer as the story progresses. The mysteries you’re encountering now are the foundation for an epic narrative that is still growing. Your support at this early stage is invaluable, especially as this journey is only just beginning. With your encouragement and enthusiasm, we can bring this story to life in ways that will surprise and captivate you. I understand that you might have questions or uncertainties at this point, but that’s all part of the magic. The more you read, the more you’ll want to uncover these hidden secrets. Let’s build a community around this epic adventure, as our crew's journey isn’t just theirs to experience—it’s yours as well. You’re not just reading their story; you’re a part of it. As we explore the unknown together, you’ll find yourself unraveling the mysteries right alongside them. So, let’s take this next step, chapter by chapter, and uncover the secrets that await us on this incredible journey.</p>
+<p>And Here Another Info You Won't Get Easily: The Powers Which are Inherited by the people has Ressurected(or Simply were Reborn). I am Shreesh Kulkarni, The Writer & the Author, Welcomes you. Join & Become #ThatMember.</p>
+<p>Official About Page of “That Unbeatable : Chapter 1″ Follow the Web for More & Find the Story Below at the “Home” Page</p>
+    </section>
 
     <!-- Floating Feedback Button -->
     <button class="feedback-button">Feedback</button>
@@ -147,13 +218,28 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Shreesh Kulkarni. All Rights Reserved.</p>
-        <p>This manga and content are copyright-protected. Unauthorized use or distribution is strictly prohibited.</p>
-    </footer>
+<footer>
+    <p style="color: white;">&copy; 2024 Shreesh Kulkarni. All Rights Reserved.</p>
+    <p style="color: white;">This manga and content are copyright-protected. Unauthorized use or distribution is strictly prohibited.</p>
+</footer>
 
     <script>
-        // JavaScript to toggle feedback form visibility
+        // Display Home section initially on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home-section');
+        });
+
+        // Toggle visibility for different sections based on tab clicks
+        function showSection(sectionId) {
+            document.querySelectorAll('section, .title-container').forEach(el => el.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        document.getElementById('home-tab').addEventListener('click', () => showSection('home-section'));
+        document.getElementById('manga-tab').addEventListener('click', () => showSection('manga-section'));
+        document.getElementById('about-tab').addEventListener('click', () => showSection('about-section'));
+
+        // JavaScript for feedback button and form visibility
         document.querySelector('.feedback-button').addEventListener('click', function() {
             const feedbackForm = document.getElementById('feedback-form');
             feedbackForm.style.display = feedbackForm.style.display === 'block' ? 'none' : 'block';
@@ -167,7 +253,7 @@
                 return false;
             }
             alert('Feedback submitted. Thank you!');
-            return true; // You can replace this alert with form submission handling
+            return true; // For form handling
         }
     </script>
 </body>
