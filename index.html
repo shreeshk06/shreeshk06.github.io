@@ -3,258 +3,1028 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intents</title>
+    <title>INTENTS - Official Manga Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;700;900&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* General styling */
-        body, h1, h2, h3, p, ul, li, a {
+        * {
             margin: 0;
             padding: 0;
-            list-style: none;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            color: #333;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary: #ff3333;
+            --secondary: #1a1a1a;
+            --accent: #ffd700;
+            --light: #f0f0f0;
+            --dark: #0a0a0a;
+        }
+
         body {
-            background-color: #f9f9f9;
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #f0f0f0;
+            overflow-x: hidden;
             line-height: 1.6;
+            min-height: 100vh;
         }
+
+        /* HEADER & NAVIGATION */
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
+            background: linear-gradient(90deg, rgba(26,26,26,0.95) 0%, rgba(22,33,62,0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--primary);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(255, 51, 51, 0.2);
+            animation: slideDownHeader 0.6s ease-out;
         }
-        header nav ul {
+
+        @keyframes slideDownHeader {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
         }
-        header nav ul li {
-            margin: 0 20px;
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glowPulse 2s ease-in-out infinite;
         }
-        header nav ul li a {
-            color: white;
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 51, 51, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); }
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: bold;
+            color: #f0f0f0;
+            text-decoration: none;
             cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        header nav ul li a:hover {
-            color: #ff6347;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 0;
         }
 
-        /* Main Title (Home Section) */
-        .title-container {
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+            animation: rotateBg 20s linear infinite;
+        }
+
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
             text-align: center;
-            margin-top: 50px;
-            font-size: 60px;
-            color: #333;
-        }
-        .title-container h1 {
-            color: #333;
-            font-family: "Comic Sans MS", cursive;
-            text-shadow: 2px 2px #aaa;
-        }
-        .title-container h1 span {
-            color: red;
-        }
-        .title-container h2 {
-            font-size: 24px;
-            color: #555;
+            animation: fadeInUp 1s ease-out;
         }
 
-        /* Manga Section */
-        .manga-section, .about-section {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 120px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite, bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-shadow: 0 0 30px rgba(255, 51, 51, 0.3);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--accent);
+            margin-bottom: 40px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 50px;
+            background: linear-gradient(135deg, var(--primary), #ff6666);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.4);
+            animation: slideUp 0.8s ease-out 0.3s backwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 51, 51, 0.6);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* MAIN CONTENT SECTIONS */
+        .content-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 60px 40px;
             display: none;
-            text-align: center;
-            margin: 40px 0;
+            animation: fadeInSection 0.6s ease-out;
+            position: relative;
         }
-        .manga-section ul {
+
+        .content-section::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 51, 51, 0.05), rgba(255, 215, 0, 0.02));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+            z-index: -1;
+        }
+
+        .content-section.active::before {
+            opacity: 1;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TAB SWITCH ANIMATION */
+        @keyframes backgroundPulse {
+            0% {
+                background: linear-gradient(135deg, rgba(255, 51, 51, 0.05), rgba(255, 215, 0, 0.02));
+            }
+            50% {
+                background: linear-gradient(225deg, rgba(255, 51, 51, 0.15), rgba(255, 215, 0, 0.08));
+            }
+            100% {
+                background: linear-gradient(135deg, rgba(255, 51, 51, 0.05), rgba(255, 215, 0, 0.02));
+            }
+        }
+
+        body.tab-switching {
+            animation: backgroundPulse 1s ease-in-out;
+        }
+
+        /* JOURNEY LOADING ANIMATION */
+        .journey-container {
+            margin: 80px 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
         }
-        .manga-section ul li {
-            width: 150px;
-            background-color: #f0f0f0;
-            padding: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+
+        .journey-container::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.1), transparent);
+            border-radius: 50%;
+            animation: expandPulse 2s ease-out infinite;
         }
-        .manga-section ul li img {
+
+        @keyframes expandPulse {
+            0% {
+                width: 100px;
+                height: 100px;
+                opacity: 1;
+            }
+            100% {
+                width: 500px;
+                height: 500px;
+                opacity: 0;
+            }
+        }
+
+        .loading-text {
+            display: flex;
+            gap: 8px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 64px;
+            letter-spacing: 8px;
+            font-weight: 900;
+            position: relative;
+            z-index: 2;
+        }
+
+        .char {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: floatChar 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .char:nth-child(1) { animation-delay: 0s; }
+        .char:nth-child(2) { animation-delay: 0.1s; }
+        .char:nth-child(3) { animation-delay: 0.2s; }
+        .char:nth-child(4) { animation-delay: 0.3s; }
+        .char:nth-child(5) { animation-delay: 0.4s; }
+        .char:nth-child(6) { animation-delay: 0.5s; }
+        .char:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes floatChar {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 1;
+            }
+            25% {
+                transform: translateY(-20px) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-40px) scale(0.9);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-20px) scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        /* CHAPTERS SECTION */
+        .chapters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .chapter-card {
+            background: linear-gradient(135deg, rgba(255, 51, 51, 0.1), rgba(255, 215, 0, 0.05));
+            border: 2px solid rgba(255, 51, 51, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            cursor: pointer;
+            animation: scaleInCard 0.6s ease-out backwards;
+        }
+
+        .chapter-card:nth-child(1) { animation-delay: 0.1s; }
+        .chapter-card:nth-child(2) { animation-delay: 0.2s; }
+        .chapter-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes scaleInCard {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(255, 51, 51, 0.3);
+        }
+
+        .chapter-image {
             width: 100%;
-            height: 150px;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 51, 51, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .chapter-card img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
-        .manga-section ul li a {
+
+        .chapter-info {
+            padding: 25px;
+        }
+
+        .chapter-title {
+            font-family: 'Orbitron', sans-serif;
             font-size: 18px;
-            color: #333;
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        /* About Section */
-        .about-section {
-            padding: 20px;
-            margin-top: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: 40px auto;
+        .chapter-status {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--accent);
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .chapter-date {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .chapter-desc {
+            font-size: 14px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+
+        /* CHARACTERS SECTION */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .character-card {
             text-align: center;
+            animation: fadeInUp 0.8s ease-out backwards;
         }
 
-        /* Floating Feedback Button */
+        .character-card:nth-child(1) { animation-delay: 0.1s; }
+        .character-card:nth-child(2) { animation-delay: 0.2s; }
+
+        .character-avatar {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .character-card:hover .character-avatar {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 51, 51, 0.5);
+        }
+
+        .character-avatar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid transparent;
+            border-top-color: var(--accent);
+            border-right-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .character-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .character-role {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .character-power {
+            background: linear-gradient(135deg, rgba(255, 51, 51, 0.2), rgba(255, 215, 0, 0.1));
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid var(--primary);
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .character-desc {
+            font-size: 15px;
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        /* ABOUT SECTION */
+        .about-content {
+            background: linear-gradient(135deg, rgba(255, 51, 51, 0.08), rgba(255, 215, 0, 0.05));
+            border: 2px solid rgba(255, 51, 51, 0.2);
+            border-radius: 20px;
+            padding: 60px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .about-content h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 48px;
+            letter-spacing: 4px;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 56px;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+            text-align: center;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* FEEDBACK SECTION */
         .feedback-button {
             position: fixed;
-            left: 20px;
-            top: 50%;
-            padding: 10px 20px;
-            background-color: #ff6347;
+            right: 30px;
+            bottom: 30px;
+            padding: 18px 25px;
+            background: linear-gradient(135deg, var(--primary), #ff6666);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255, 51, 51, 0.4);
+            z-index: 100;
+            transition: all 0.3s ease;
+            animation: bounceInRight 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* Feedback Form Popup */
+        @keyframes bounceInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            50% { transform: translateX(-10px); }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .feedback-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255, 51, 51, 0.6);
+        }
+
         .feedback-form {
             display: none;
             position: fixed;
-            bottom: 100px;
-            left: 20px;
-            width: 300px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-            border-radius: 10px;
-        }
-        .feedback-form label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-        .feedback-form input[type="text"], .feedback-form input[type="email"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .feedback-form button {
-            padding: 8px 15px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            bottom: 120px;
+            right: 30px;
+            width: 350px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98), rgba(22, 33, 62, 0.98));
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(255, 51, 51, 0.4);
+            z-index: 101;
+            animation: slideInRight 0.4s ease-out;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feedback-form.active {
+            display: block;
+        }
+
+        .feedback-form h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .feedback-form label {
+            display: block;
+            margin: 15px 0 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(240, 240, 240, 0.05);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+            border-radius: 8px;
+            color: #f0f0f0;
+            font-family: 'Raleway', sans-serif;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            outline: none;
+            background: rgba(240, 240, 240, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+        }
+
+        .feedback-form button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary), #ff6666);
             color: white;
-            margin-top: 50px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 51, 51, 0.4);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(90deg, var(--secondary), #0f1419);
+            border-top: 3px solid var(--primary);
+            padding: 40px;
+            text-align: center;
+            margin-top: 100px;
+            color: #aaa;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        footer .hashtag {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 60px; }
+            .hero h2 { font-size: 18px; }
+            nav ul { gap: 20px; }
+            .content-section { padding: 40px 20px; }
+            .about-content { padding: 30px; }
+            .chapters-container { grid-template-columns: 1fr; }
+            .characters-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
         <nav>
+            <div class="logo">INTENTS</div>
             <ul>
-                <li><a id="home-tab" href="#">Home</a></li>
-                <li><a id="manga-tab" href="#">Manga</a></li>
-                <li><a id="about-tab" href="#">About</a></li>
+                <li><a id="home-tab">Home</a></li>
+                <li><a id="chapters-tab">Chapters</a></li>
+                <li><a id="characters-tab">Characters</a></li>
+                <li><a id="about-tab">About</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Home Section -->
-    <div class="title-container" id="home-section">
-        <h1>INTENTS</h1>
-        <h2>An Original By Shreesh Kulkarni</h2>
-    </div>
-
-    <!-- Manga Section -->
-    <section class="manga-section" id="manga-section">
-        <h3>New Chapters Coming Soon</h3>
-        <ul>
-            <li>
-                <img src="chapter1.png" alt="Chapter 1">
-                <a href="chapter1.html">Chapter 1: Imperfect Start</a>
-            </li>
-        </ul>
+    <!-- HERO SECTION -->
+    <section class="hero content-section active" id="home-section">
+        <div class="hero-content">
+            <h1>INTENTS</h1>
+            <h2>AN ORIGINAL MANGA BY SHREESH KULKARNI</h2>
+            <button class="cta-button" id="start-btn">Discover the Journey</button>
+        </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about-section">
-        <h2>About</h2>
-<p>INTENTS : Original Story by Shreesh Kulkarni #ThoseIntents</p>
-<p>In a Similar Unfair World, we are introduced to two brothers who are living normally but find themselves stepping into the unknown. From the very beginning, We will have the Tension. With the weight of their New Responsibilities, they start to uncover the hidden depths of their extraordinary powers, but they soon realize that these abilities are not fully within their control And their Powers are Elemental. Each new challenge brings them closer to understanding their true potential, yet also reveals dangerous truths that have been lurking in the shadows for far longer than they could have imagined. First they Discover their Powers but the thing Important for them is to Find their Cover. These brothers Especially have the crave for Monarchy. The future holds even greater mysteries—cryptic visions, strange symbols, and ancient prophecies all pointing toward a looming conflict that is far beyond their comprehension.</p>
-<p>However, there are many things in this Chapter/Volume that might not make complete sense right now. You may come across moments that seem confusing or details that feel incomplete, but trust me, these seemingly small mysteries are carefully placed pieces of a much larger puzzle. As we move forward in the story and dive into the upcoming chapters, these early clues will begin to unfold. The more you read, the more everything will fall into place, and you’ll find yourself not only understanding these mysteries but becoming personally invested in them. As the brothers delve deeper into their destiny, they realize their powers are tied not just to the present but to future events—events that may very well determine the fate of entire worlds. Forgotten relics, hidden symbols, and unexplained phenomena offer glimpses into what lies ahead, yet the truth remains elusive. Together, they must learn to harness their newfound abilities and confront the dangers of both the present and the future.</p>
-<p>This journey is not just about power; it’s about self-discovery, prophecy, and a path filled with adventure, danger, and a mysterious fate awaiting them at every turn. As the story unfolds, what initially seems confusing will reveal its purpose/Intent, drawing you further into the complex world this team inhabits. This Story is Not just about powers & Monarchy but also for one to find his/her's Ultimate Purpose. As the author, I want to take a moment to personally invite you to immerse yourself in this unfolding tale. Each twist, turn, and hidden secret is a vital part of a larger, intricate world that will only become clearer as the story progresses. The mysteries you’re encountering now are the foundation for an epic narrative that is still growing. Your support at this early stage is invaluable, especially as this journey is only just beginning. With your encouragement and enthusiasm, we can bring this story to life in ways that will surprise and captivate you. I understand that you might have questions or uncertainties at this point, but that’s all part of the magic. The more you read, the more you’ll want to uncover these hidden secrets. Let’s build a community around this epic adventure, as our crew's journey isn’t just theirs to experience—it’s yours as well. You’re not just reading their story; you’re a part of it. As we explore the unknown together, you’ll find yourself unraveling the mysteries right alongside them. So, let’s take this next step, chapter by chapter, and uncover the secrets that await us on this incredible journey.</p>
-<p>And Here Another Info You Won't Get Easily: The Powers Which are Inherited by the people has Ressurected(or Simply were Reborn). I,the Writer & the Author, Welcomes you. Join & Become #ThatMember.</p>
-<p>Official About Page of "Intents:Volume 1" Follow the Web for More & Find the Story Below at the “Home” Page</p>
+    <!-- CHAPTERS SECTION -->
+    <section class="content-section" id="chapters-section">
+        <h2 class="section-title">Chapters</h2>
+        <div style="text-align: center; margin: 80px 0; animation: fadeInUp 0.8s ease-out;">
+            <p style="font-family: 'Orbitron', sans-serif; font-size: 32px; color: var(--accent); letter-spacing: 3px; margin-bottom: 20px;">⏳</p>
+            <h3 style="font-size: 42px; color: var(--primary); font-family: 'Bebas Neue', cursive; letter-spacing: 4px; margin-bottom: 20px;">RELEASING SOON</h3>
+            <p style="font-size: 18px; color: #ddd;">The first chapter is being carefully crafted. Stay tuned for an epic adventure!</p>
+        </div>
     </section>
 
-    <!-- Floating Feedback Button -->
-    <button class="feedback-button">Feedback</button>
+    <!-- CHARACTERS SECTION -->
+    <section class="content-section" id="characters-section">
+        <h2 class="section-title">Characters</h2>
+        <div style="text-align: center; margin: 80px 0; animation: fadeInUp 0.8s ease-out;">
+            <p style="font-family: 'Orbitron', sans-serif; font-size: 32px; color: var(--accent); letter-spacing: 3px; margin-bottom: 20px;">🎨</p>
+            <h3 style="font-size: 42px; color: var(--primary); font-family: 'Bebas Neue', cursive; letter-spacing: 4px; margin-bottom: 20px;">IN DESIGN... GETTING THEM DONE</h3>
+            <p style="font-size: 18px; color: #ddd;">Our characters are being brought to life with incredible detail and depth. Meet them soon!</p>
+        </div>
+    </section>
 
-    <!-- Feedback Form Popup -->
+    <!-- ABOUT SECTION -->
+    <section class="content-section" id="about-section">
+        <div class="about-content">
+            <h2>Journey Starting Soon</h2>
+            <div class="journey-container">
+                <div class="loading-text">
+                    <span class="char">L</span>
+                    <span class="char">O</span>
+                    <span class="char">A</span>
+                    <span class="char">D</span>
+                    <span class="char">I</span>
+                    <span class="char">N</span>
+                    <span class="char">G</span>
+                </div>
+            </div>
+            <p style="margin-top: 60px; color: var(--accent); font-weight: 700; font-size: 18px; text-align: center; letter-spacing: 3px;">Join the community. Become <span class="hashtag">#ThatMember</span> today.</p>
+        </div>
+    </section>
+
+    <!-- FEEDBACK BUTTON -->
+    <button class="feedback-button" id="feedback-btn">💬 Feedback</button>
+
+    <!-- FEEDBACK FORM -->
     <div class="feedback-form" id="feedback-form">
-        <form onsubmit="return validateFeedback()">
-            <label for="feedback">Feedback</label>
-            <input type="text" id="feedback" placeholder="Enter your feedback">
+        <h3>Share Your Thoughts</h3>
+        <form id="feedback-form-element">
+            <label for="feedback">Your Feedback</label>
+            <textarea id="feedback" placeholder="Tell us your thoughts about INTENTS..." rows="4"></textarea>
             
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-
-            <button type="submit">Submit</button>
+            <input type="email" id="email" placeholder="your@email.com" required>
+            
+            <button type="submit">Submit Feedback</button>
         </form>
     </div>
 
-    <!-- Footer -->
-<footer>
-    <p style="color: white;">&copy; 2024 Shreesh Kulkarni. All Rights Reserved.</p>
-    <p style="color: white;">This Story/Manga is an Original.No Unauthorized Use.</p>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Shreesh Kulkarni. All Rights Reserved.</p>
+        <p>INTENTS is an Original Manga. <strong>No Unauthorized Use.</strong></p>
+        <p>Join us: <span class="hashtag">#ThoseIntents #INTENTS</span></p>
+    </footer>
 
     <script>
-        // Display Home section initially on page load
-        document.addEventListener('DOMContentLoaded', () => {
+        // ===== SECTION NAVIGATION =====
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Trigger background animation on tab switch
+            document.body.classList.add('tab-switching');
+            setTimeout(() => {
+                document.body.classList.remove('tab-switching');
+            }, 1000);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('home-tab').addEventListener('click', () => {
             showSection('home-section');
         });
-
-        // Toggle visibility for different sections based on tab clicks
-        function showSection(sectionId) {
-            document.querySelectorAll('section, .title-container').forEach(el => el.style.display = 'none');
-            document.getElementById(sectionId).style.display = 'block';
-        }
-
-        document.getElementById('home-tab').addEventListener('click', () => showSection('home-section'));
-        document.getElementById('manga-tab').addEventListener('click', () => showSection('manga-section'));
+        document.getElementById('chapters-tab').addEventListener('click', () => {
+            showSection('chapters-section');
+        });
+        document.getElementById('characters-tab').addEventListener('click', () => {
+            showSection('characters-section');
+        });
         document.getElementById('about-tab').addEventListener('click', () => showSection('about-section'));
 
-        // JavaScript for feedback button and form visibility
-        document.querySelector('.feedback-button').addEventListener('click', function() {
-            const feedbackForm = document.getElementById('feedback-form');
-            feedbackForm.style.display = feedbackForm.style.display === 'block' ? 'none' : 'block';
+        document.getElementById('start-btn').addEventListener('click', () => {
+            showSection('about-section');
         });
 
-        // Validation function to ensure email is entered
-        function validateFeedback() {
-            const email = document.getElementById('email').value;
-            if (!email) {
-                alert('Please enter your email.');
-                return false;
+        // ===== LOAD CHAPTERS =====
+        async function loadChapters() {
+            try {
+                const response = await fetch('/api/chapters');
+                const data = await response.json();
+                const container = document.getElementById('chapters-container');
+                
+                container.innerHTML = data.chapters.map(chapter => `
+                    <div class="chapter-card">
+                        <div class="chapter-image">${chapter.title}</div>
+                        <div class="chapter-info">
+                            <div class="chapter-title">${chapter.title}</div>
+                            <div class="chapter-status">${chapter.status}</div>
+                            <div class="chapter-date">Release: ${chapter.release_date}</div>
+                            <div class="chapter-desc">${chapter.description}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading chapters:', error);
             }
-            alert('Feedback submitted. Thank you!');
-            return true; // For form handling
         }
+
+        // ===== LOAD CHARACTERS =====
+        async function loadCharacters() {
+            try {
+                const response = await fetch('/api/characters');
+                const data = await response.json();
+                const container = document.getElementById('characters-container');
+                
+                container.innerHTML = data.characters.map(character => `
+                    <div class="character-card">
+                        <div class="character-avatar">👤</div>
+                        <h3 class="character-name">${character.name}</h3>
+                        <div class="character-role">${character.role}</div>
+                        <div class="character-power">⚡ ${character.power}</div>
+                        <p class="character-desc">${character.description}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading characters:', error);
+            }
+        }
+
+        // ===== FEEDBACK FORM =====
+        document.getElementById('feedback-btn').addEventListener('click', () => {
+            const form = document.getElementById('feedback-form');
+            form.classList.toggle('active');
+        });
+
+        document.getElementById('feedback-form-element').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const feedback = document.getElementById('feedback').value;
+            const email = document.getElementById('email').value;
+            
+            if (!feedback || !email) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ feedback, email })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    alert(data.message);
+                    document.getElementById('feedback-form-element').reset();
+                    document.getElementById('feedback-form').classList.remove('active');
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting feedback. Please try again.');
+            }
+        });
+
+        // ===== SMOOTH SCROLL & ANIMATIONS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== ADD PARALLAX EFFECT =====
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            if (hero) {
+                hero.style.backgroundPosition = `0 ${scrolled * 0.5}px`;
+            }
+        });
+
+        // ===== LOAD DATA ON PAGE START =====
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('INTENTS website loaded successfully!');
+        });
     </script>
 </body>
 </html>
