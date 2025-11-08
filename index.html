@@ -4,321 +4,973 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTENTS - Official Story</title>
-    
-    <link rel="icon" type="image/x-icon" href="[URL_TO_YOUR_FAVICON.ICO_OR_PNG]">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
-    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0a' width='100' height='100'/><text x='50' y='70' font-size='80' font-weight='900' fill='%23f5f5f5' text-anchor='middle' font-family='Arial'>I</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS Variables and Global Reset --- */
-        :root {
-            --dark: #101010;
-            --white: #ffffff;
-            --light-grey: #a0a0a0;
-            --accent: #FF4757; /* Energetic red/pink for branding */
-            --border-color: rgba(255, 255, 255, 0.08);
-            --menu-width: 300px;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --dark: #0a0a0a;
+            --dark-secondary: #1a1a1a;
+            --white: #f5f5f5;
+            --white-secondary: #e0e0e0;
+            --accent: #cccccc;
         }
 
         body {
-            background-color: var(--dark);
-            color: var(--white);
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: var(--white);
+            overflow-x: hidden;
             line-height: 1.6;
-            overflow-x: hidden; /* Prevents horizontal scroll during transitions */
-            transition: background-color 0.4s ease;
-        }
-        
-        /* State Class for Menu Open */
-        body.menu-is-open {
-            /* Optional: Dim the content slightly when the menu is open */
-            overflow: hidden; /* Lock scroll on body when menu is open */
+            min-height: 100vh;
+            position: relative;
         }
 
-        /* --- Navbar and Icon Toggle --- */
-        .navbar {
+        /* BACKGROUND VISUAL EFFECT */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBg 20s ease-in-out infinite;
+        }
+
+        @keyframes floatBg {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(50px); }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatBg 25s ease-in-out infinite reverse;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(15, 15, 15, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDownHeader 0.8s ease-out;
+        }
+
+        @keyframes slideDownHeader {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header nav {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            background: rgba(16, 16, 16, 0.95);
-            border-bottom: 1px solid var(--border-color);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
         }
 
-        /* The new Icon/Favicon Button */
-        .menu-toggle-btn {
+        .logo-btn {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--white);
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease-out;
-            z-index: 1001; /* Ensure it's above the side menu when transitioning */
-        }
-        
-        .menu-toggle-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Icon Container and Transition Logic */
-        .logo-icon-container {
+            transition: all 0.3s ease;
+            text-transform: uppercase;
             position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .logo-icon-container span {
+        .logo-btn::after {
+            content: '';
             position: absolute;
-            line-height: 1;
-            font-size: 24px;
-            /* Premium Transition: Smoother timing function for visual appeal */
-            transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
-            color: var(--accent);
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.4s ease;
         }
 
-        .icon-close {
-            opacity: 0;
-            transform: rotate(-90deg) scale(0.5); /* Starts rotated and small */
+        .logo-btn:hover::after {
+            width: 100%;
+        }
+
+        .logo-btn:hover {
+            letter-spacing: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
             color: var(--white);
         }
-        
-        /* --- Side Menu (The core smooth transition) --- */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: 0; /* Positioned on the right for a slide-in effect */
-            width: var(--menu-width);
-            height: 100vh;
-            background: var(--dark);
-            box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
-            padding: 80px 30px 20px;
-            z-index: 9999;
-            
-            /* High-Performance Animation: Use transform instead of 'left'/'right' */
-            transform: translateX(100%); /* Initial state: Pushed off-screen to the right */
-            /* Premium Transition: Slower, deliberate cubic-bezier curve for a high-end feel */
-            transition: transform 0.5s cubic-bezier(0.8, 0, 0.2, 1);
-        }
-        
-        .side-menu-content a {
-            display: block;
-            padding: 15px 0;
-            margin-bottom: 5px;
-            font-size: 1.2em;
-            border-bottom: 1px solid var(--border-color);
-            transition: color 0.3s, padding-left 0.3s;
-        }
-        
-        .side-menu-content a:hover {
-            color: var(--accent);
-            padding-left: 10px;
+
+        nav a:hover::after {
+            width: 100%;
         }
 
-        /* Menu Overlay for closing */
+        /* SIDE MENU */
         .menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            opacity: 0;
-            pointer-events: none; /* Allows clicks through when transparent */
-            transition: opacity 0.4s ease-out;
-            z-index: 9998;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            z-index: 998;
+            backdrop-filter: blur(8px);
         }
 
-        /* --- Active State Logic (Toggled by JavaScript) --- */
-        
-        /* 1. Menu Slides In */
-        body.menu-is-open .side-menu {
-            transform: translateX(0); /* Slides into view */
+        .menu-overlay.active {
+            display: block;
         }
 
-        /* 2. Overlay Fades In */
-        body.menu-is-open .menu-overlay {
-            opacity: 1;
-            pointer-events: auto;
+        .side-menu {
+            position: fixed;
+            left: -450px;
+            top: 0;
+            width: 450px;
+            height: 100vh;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.99) 0%, rgba(15, 15, 15, 0.99) 100%);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 40px;
+            overflow-y: auto;
+            z-index: 999;
+            transition: left 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
         }
 
-        /* 3. Icon State Change (☰ to ✕) */
-        body.menu-is-open .logo-icon-container .icon-open {
-            opacity: 0;
-            transform: rotate(90deg) scale(0.5);
+        .side-menu.active {
+            left: 0;
         }
 
-        body.menu-is-open .logo-icon-container .icon-close {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* --- Main Content Styling (Kept simplified) --- */
-        section {
-            padding: 100px 5%;
-            min-height: 80vh;
+        .close-btn:hover {
+            transform: rotate(90deg);
+            opacity: 0.6;
+        }
+
+        .menu-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 50px;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .menu-section {
+            margin-bottom: 50px;
+        }
+
+        .menu-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .menu-section ul {
+            list-style: none;
+        }
+
+        .menu-section ul li {
+            margin-bottom: 18px;
+        }
+
+        .menu-section a {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--white-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .menu-section a::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        .menu-section a:hover {
+            color: var(--white);
+        }
+
+        .menu-section a:hover::before {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-        }
-        
-        h1 { font-size: 3em; color: var(--white); }
-        h2 { font-size: 1.5em; color: var(--accent); margin-top: 10px; }
-        
-        /* Feedback Form Styling (As per previous code for structure) */
-        .contact-section { max-width: 600px; margin: 0 auto; }
-        .feedback-form input, .feedback-form textarea { 
-            width: 100%; padding: 12px 15px; background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 2px; 
-            color: var(--white); font-family: 'Inter', sans-serif; margin-bottom: 15px; 
-            transition: 0.3s; font-size: 1em; 
-        }
-        .feedback-form input:focus, .feedback-form textarea:focus { 
-            outline: none; background: rgba(255, 255, 255, 0.06); 
-            border-color: rgba(255, 255, 255, 0.1); 
-            box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 20px; 
-        }
-        .feedback-form button { 
-            width: 100%; padding: 12px; background: var(--white); color: var(--dark); 
-            border: none; border-radius: 2px; font-weight: 600; font-size: 11px; 
-            letter-spacing: 1.5px; cursor: pointer; transition: 0.3s; text-transform: uppercase;
-        }
-        .feedback-form button:hover { 
-            transform: translateY(-2px); 
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 40px;
+            text-align: center;
         }
 
-        /* Footer */
-        footer {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
             text-align: center;
-            padding: 20px 5%;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.8em;
-            color: var(--light-grey);
+            animation: fadeInUp 1.2s ease-out;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 140px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 30px;
+            animation: slideInDown 1s ease-out;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 50px;
+            animation: fadeIn 1.5s ease-out;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-tagline {
+            font-size: 16px;
+            color: var(--white-secondary);
+            margin-bottom: 60px;
+            animation: slideUp 1s ease-out 0.2s backwards;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 60px;
+            background: var(--white);
+            color: var(--dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            animation: slideUp 1s ease-out 0.4s backwards;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: left 0.4s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            max-width: 1200px;
+            margin: 120px auto;
+            padding: 60px 40px;
+            display: none;
+            animation: fadeInSection 0.8s ease-out;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TAB SWITCH ANIMATION */
+        body.tab-switching::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            pointer-events: none;
+            animation: tabSwitchFlash 0.7s ease-out;
+            z-index: 999;
+        }
+
+        @keyframes tabSwitchFlash {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 60px;
+            text-align: center;
+            animation: slideInLeft 0.8s ease-out;
+            text-transform: uppercase;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* COMING SOON SECTION */
+        .coming-soon-container {
+            text-align: center;
+            margin: 100px 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .coming-soon-icon {
+            font-size: 80px;
+            margin-bottom: 40px;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-25px); }
+        }
+
+        .coming-soon-container h3 {
+            font-size: 52px;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .coming-soon-container p {
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* ABOUT SECTION */
+        .about-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 2px;
+            padding: 80px;
+            animation: fadeInUp 0.8s ease-out;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--white-secondary);
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+
+        .journey-text {
+            font-size: 20px;
+            color: var(--white);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-align: center;
+            margin: 60px 0;
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                opacity: 0.8;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                opacity: 1;
+                text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .hashtag {
+            color: var(--white);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* FEEDBACK BUTTON & FORM */
+        .feedback-button {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            padding: 16px 24px;
+            background: var(--white);
+            color: var(--dark);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+            animation: slideInBottom 0.8s ease-out 0.5s backwards;
+            text-transform: uppercase;
+        }
+
+        @keyframes slideInBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .feedback-form {
+            display: none;
+            position: fixed;
+            bottom: 110px;
+            right: 40px;
+            width: 340px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.98) 0%, rgba(15, 15, 15, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            z-index: 101;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feedback-form.active {
+            display: block;
+        }
+
+        .feedback-form h3 {
+            font-family: 'Inter', sans-serif;
+            color: var(--white);
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .feedback-form label {
+            display: block;
+            margin: 18px 0 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            font-size: 13px;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+        }
+
+        .feedback-form button {
+            width: 100%;
+            padding: 12px;
+            background: var(--white);
+            color: var(--dark);
+            border: none;
+            border-radius: 2px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .feedback-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 150px;
+            color: var(--accent);
+        }
+
+        footer p {
+            margin: 12px 0;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 60px; }
+            nav ul { gap: 20px; }
+            nav a { font-size: 10px; }
+            .side-menu { width: 100%; left: -100%; }
+            .about-content { padding: 40px 30px; }
         }
     </style>
 </head>
 <body>
-
-    <div id="menu-overlay" class="menu-overlay"></div>
-
-    <header class="navbar">
-        <button class="menu-toggle-btn" id="menu-btn" aria-expanded="false" aria-controls="side-menu">
-            <div class="logo-icon-container">
-                <span class="icon-open">☰</span>
-                <span class="icon-close">✕</span>
-            </div>
-        </button>
-    </header>
-    
-    <nav id="side-menu" class="side-menu">
-        <div class="side-menu-content">
-            <a href="#home">Home</a>
-            <a href="#chapters">Chapters</a>
-            <a href="#about">About INTENTS</a>
-            <a href="#contact">Contact & Feedback</a>
-        </div>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <button class="logo-btn" id="menu-btn">I</button>
+            <ul>
+                <li><a id="home-tab">Home</a></li>
+                <li><a id="chapters-tab">Chapters</a></li>
+                <li><a id="about-tab">About</a></li>
+            </ul>
         </nav>
+    </header>
 
+    <!-- SIDE MENU -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <div class="side-menu" id="side-menu">
+        <button class="close-btn" id="close-menu">✕</button>
+        <h2 class="menu-title">Menu</h2>
 
-    <main>
-        <section id="home">
-            <div class="hero-content">
-                <h1>INTENTS</h1>
-                <h2>An Original Story by Shreesh Kulkarni</h2>
-                <p style="color: var(--light-grey); max-width: 600px;">
-                    Dive into a world of complex characters and deep lore. The story of INTENTS is a journey through destiny, power, and high-stakes conflict.
-                </p>
-                <a href="#chapters" style="color: var(--accent); font-weight: bold; margin-top: 15px;">START READING →</a>
-            </div>
-        </section>
+        <div class="menu-section">
+            <h3>Main</h3>
+            <ul>
+                <li><a href="#" class="menu-nav" data-section="home-section">Home</a></li>
+                <li><a href="#" class="menu-nav" data-section="chapters-section">Chapters</a></li>
+                <li><a href="#" class="menu-nav" data-section="about-section">About</a></li>
+                <li><a href="#">News</a></li>
+            </ul>
+        </div>
 
-        <section id="chapters" style="background-color: #0b0b0b;">
-            <h1 style="text-align: center; margin-bottom: 40px;">Chapter Index</h1>
-            </section>
+        <div class="menu-section">
+            <h3>Connect</h3>
+            <ul>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 
-        <section id="contact">
-            <h1 style="text-align: center; margin-bottom: 40px;">Send Feedback</h1>
-            <form class="feedback-form">
-                <input type="text" name="name" placeholder="Your Name (Required)" required>
-                <input type="email" name="email" placeholder="Your Email (Optional)">
-                <textarea name="message" rows="5" placeholder="Your Feedback or Question (Required)" required></textarea>
-                <button type="submit">SUBMIT MESSAGE</button>
-            </form>
-        </section>
-    </main>
+    <!-- HERO SECTION -->
+    <section class="hero content-section active" id="home-section">
+        <div class="hero-content">
+            <h1>INTENTS</h1>
+            <h2>An Original Story by Shreesh Kulkarni</h2>
+            <p class="hero-tagline">Witness the convergence of power and destiny. And Their <strong>True</strong> <strong>INTENT</strong>ion<strong>S</strong></p>
+            <button class="cta-button" id="start-btn">Begin The Journey</button>
+        </div>
+    </section>
 
+    <!-- CHAPTERS SECTION -->
+    <section class="content-section" id="chapters-section">
+        <h2 class="section-title">Chapters</h2>
+        <div class="coming-soon-container">
+            <div class="coming-soon-icon">⏳</div>
+            <h3>Releasing Soon</h3>
+            <p>The first chapter is being meticulously crafted. Stay tuned for an extraordinary tale.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="content-section" id="about-section">
+        <div class="about-content">
+            <h2>Journey Starting Soon</h2>
+            <p class="journey-text">Get ready to embark on an unforgettable adventure...</p>
+            <p style="margin-top: 60px; text-align: center; font-size: 16px; letter-spacing: 1px;">Join the community. Become <span class="hashtag">#ThatMember</span> today.</p>
+        </div>
+    </section>
+
+    <!-- NEWS SECTION (Hidden) -->
+    <section class="content-section" id="news-section">
+        <h2 class="section-title">News</h2>
+        <div class="coming-soon-container">
+            <div class="coming-soon-icon">📰</div>
+            <h3>Coming Soon</h3>
+            <p>Stay tuned for the latest updates and announcements about INTENTS.</p>
+        </div>
+    </section>
+
+    <!-- FEEDBACK BUTTON -->
+    <button class="feedback-button" id="feedback-btn">💬 Feedback</button>
+
+    <!-- FEEDBACK FORM -->
+    <div class="feedback-form" id="feedback-form">
+        <h3>Share Your Thoughts</h3>
+        <form id="feedback-form-element">
+            <label for="feedback">Message</label>
+            <textarea id="feedback" placeholder="Your message..." rows="4"></textarea>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 INTENTS - Official Story. All Rights Reserved.</p>
+        <p>&copy; 2025 Shreesh Kulkarni. All Rights Reserved.</p>
+        <p>INTENTS is an Original Story. No Unauthorized Use.</p>
+        <p>Join us: #ThoseIntents #INTENTS</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuBtn = document.getElementById('menu-btn');
-            const menuOverlay = document.getElementById('menu-overlay');
-            const sideMenu = document.getElementById('side-menu');
-            const body = document.body;
-            
-            // Function to close the menu
-            const closeMenu = () => {
-                body.classList.remove('menu-is-open');
-                menuBtn.setAttribute('aria-expanded', 'false');
-            };
+        let previousSection = 'home-section';
 
-            // Function to open the menu
-            const openMenu = () => {
-                body.classList.add('menu-is-open');
-                menuBtn.setAttribute('aria-expanded', 'true');
-            };
+        // ===== MENU TOGGLE =====
+        const menuBtn = document.getElementById('menu-btn');
+        const sideMenu = document.getElementById('side-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const closeMenu = document.getElementById('close-menu');
 
-            // CORE LOGIC: Menu Toggle (Open/Collapse)
-            // The top-left button now handles both opening and collapsing the menu.
-            menuBtn.addEventListener('click', () => {
-                if (body.classList.contains('menu-is-open')) {
-                    closeMenu(); // Collapse if already open
-                } else {
-                    openMenu(); // Open if closed
-                }
-            });
-
-            // Close menu when clicking the overlay
-            menuOverlay.addEventListener('click', closeMenu);
-            
-            // Close menu when a navigation link is clicked (for single-page scrolling)
-            sideMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-            
-            // Simple Form Handler (Replace with actual backend submission)
-            const feedbackForm = document.querySelector('.feedback-form');
-            if (feedbackForm) {
-                feedbackForm.addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    alert('Feedback received! Thank you for helping improve INTENTS.');
-                    feedbackForm.reset();
-                    // Close the menu if the form was submitted while it was open
-                    if (body.classList.contains('menu-is-open')) {
-                        closeMenu(); 
-                    }
-                });
+        menuBtn.addEventListener('click', () => {
+            if (sideMenu.classList.contains('active')) {
+                closeMenus();
+            } else {
+                sideMenu.classList.add('active');
+                menuOverlay.classList.add('active');
             }
+        });
+
+        closeMenu.addEventListener('click', closeMenus);
+        menuOverlay.addEventListener('click', closeMenus);
+
+        function closeMenus() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+
+        document.querySelectorAll('.menu-nav').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                showSection(sectionId);
+                closeMenus();
+            });
+        });
+
+        // ===== SECTION NAVIGATION =====
+        function showSection(sectionId) {
+            const currentActive = document.querySelector('.content-section.active');
+            if (currentActive) {
+                previousSection = currentActive.id;
+            }
+
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            
+            document.body.classList.add('tab-switching');
+            setTimeout(() => {
+                document.body.classList.remove('tab-switching');
+            }, 700);
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('home-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('home-section');
+        });
+        document.getElementById('chapters-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('chapters-section');
+        });
+        document.getElementById('about-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('about-section');
+        });
+        document.getElementById('start-btn').addEventListener('click', () => showSection('about-section'));
+
+        // ===== FEEDBACK FORM =====
+        document.getElementById('feedback-btn').addEventListener('click', () => {
+            const form = document.getElementById('feedback-form');
+            form.classList.toggle('active');
+        });
+
+        document.getElementById('feedback-form-element').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const feedback = document.getElementById('feedback').value;
+            const email = document.getElementById('email').value;
+            
+            if (!feedback || !email) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ feedback, email })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    alert(data.message);
+                    document.getElementById('feedback-form-element').reset();
+                    document.getElementById('feedback-form').classList.remove('active');
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting feedback. Please try again.');
+            }
+        });
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('INTENTS website loaded successfully!');
         });
     </script>
 </body>
