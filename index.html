@@ -3,9 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INTENTS - Official Story</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0a' width='100' height='100'/><text x='50' y='70' font-size='80' font-weight='900' fill='%23f5f5f5' text-anchor='middle' font-family='Arial'>I</text></svg>">
+    
+    <!-- SEO Meta Tags -->
+    <title>INTENTS - Original Story by Shreesh Kulkarni | Manga & Web Novel</title>
+    <meta name="description" content="INTENTS is an original web novel and manga series by Shreesh Kulkarni. Follow two brothers discovering their elemental powers and uncovering ancient prophecies. Read chapters online.">
+    <meta name="keywords" content="INTENTS, original story, manga, web novel, Shreesh Kulkarni, elemental powers, fantasy, brothers, adventure">
+    <meta name="author" content="Shreesh Kulkarni">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="revisit-after" content="7 days">
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://intents-story.com/">
+    <meta property="og:title" content="INTENTS - Original Story by Shreesh Kulkarni">
+    <meta property="og:description" content="Discover INTENTS: An epic tale of two brothers, elemental powers, and ancient prophecies. Original manga and web novel series.">
+    <meta property="og:image" content="https://intents-story.com/og-image.png">
+    <meta property="og:site_name" content="INTENTS Official">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://intents-story.com/">
+    <meta name="twitter:title" content="INTENTS - Original Story by Shreesh Kulkarni">
+    <meta name="twitter:description" content="An epic web novel and manga series featuring two brothers discovering elemental powers and uncovering ancient mysteries.">
+    <meta name="twitter:image" content="https://intents-story.com/twitter-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://intents-story.com/">
+    
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0a' width='100' height='100'/><text x='50' y='70' font-size='80' font-weight='900' fill='%23f5f5f5' text-anchor='middle' font-family='Arial'>I</text></svg>">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "INTENTS",
+      "description": "An original web novel and manga series featuring two brothers discovering elemental powers and ancient prophecies",
+      "creator": {
+        "@type": "Person",
+        "name": "Shreesh Kulkarni"
+      },
+      "genre": ["Fantasy", "Adventure", "Manga", "Web Novel"],
+      "url": "https://intents-story.com/",
+      "inLanguage": "en-US",
+      "datePublished": "2024-01-01",
+      "isAccessibleForFree": true
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "INTENTS Official",
+      "url": "https://intents-story.com/",
+      "logo": "https://intents-story.com/logo.png",
+      "description": "Home of INTENTS: An original manga and web novel series by Shreesh Kulkarni",
+      "sameAs": [
+        "https://twitter.com/intents",
+        "https://instagram.com/intents"
+      ]
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -764,19 +834,19 @@
     <!-- HEADER -->
     <header>
         <nav>
-            <button class="logo-btn" id="menu-btn">I</button>
+            <button class="logo-btn" id="menu-btn" aria-label="Open navigation menu">I</button>
             <ul>
-                <li><a id="home-tab">Home</a></li>
-                <li><a id="chapters-tab">Chapters</a></li>
-                <li><a id="about-tab">About</a></li>
+                <li><a id="home-tab" role="button" tabindex="0">Home</a></li>
+                <li><a id="chapters-tab" role="button" tabindex="0">Chapters</a></li>
+                <li><a id="about-tab" role="button" tabindex="0">About</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- SIDE MENU -->
-    <div class="menu-overlay" id="menu-overlay"></div>
-    <div class="side-menu" id="side-menu">
-        <button class="close-btn" id="close-menu">✕</button>
+    <div class="menu-overlay" id="menu-overlay" role="presentation"></div>
+    <div class="side-menu" id="side-menu" role="navigation" aria-label="Main navigation menu">
+        <button class="close-btn" id="close-menu" aria-label="Close navigation menu">✕</button>
         <h2 class="menu-title">Menu</h2>
 
         <div class="menu-section">
@@ -792,15 +862,15 @@
         <div class="menu-section">
             <h3>Connect</h3>
             <ul>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="mailto:contact@intents-story.com">Contact</a></li>
             </ul>
         </div>
     </div>
 
     <!-- HERO SECTION -->
-    <section class="hero content-section active" id="home-section">
+    <section class="hero content-section active" id="home-section" role="main">
         <div class="hero-content">
             <h1>INTENTS</h1>
             <h2>An Original Story by Shreesh Kulkarni</h2>
@@ -810,27 +880,31 @@
     </section>
 
     <!-- CHAPTERS SECTION -->
-    <section class="content-section" id="chapters-section">
-        <h2 class="section-title">Chapters</h2>
+    <section class="content-section" id="chapters-section" role="region" aria-labelledby="chapters-title">
+        <h2 class="section-title" id="chapters-title">Chapters</h2>
         <div class="coming-soon-container">
             <div class="coming-soon-icon">⏳</div>
             <h3>Releasing Soon</h3>
-            <p>The first chapter is being meticulously crafted. Stay tuned for an extraordinary tale.</p>
+            <p>The first chapter of INTENTS is being meticulously crafted. Stay tuned for an extraordinary tale of elemental powers and ancient prophecies.</p>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="content-section" id="about-section">
+    <section class="content-section" id="about-section" role="region" aria-labelledby="about-title">
         <div class="about-content">
-            <h2>Journey Starting Soon</h2>
-            <p class="journey-text">Get ready to embark on an unforgettable adventure...</p>
+            <h2 id="about-title">Journey Starting Soon</h2>
+            <p class="journey-text">Get ready to embark on an unforgettable adventure with INTENTS...</p>
             <p style="margin-top: 60px; text-align: center; font-size: 16px; letter-spacing: 1px;">Join the community. Become <span class="hashtag">#ThatMember</span> today.</p>
+            <p style="margin-top: 40px; color: var(--white-secondary); font-size: 14px; line-height: 1.8;">
+                INTENTS follows the extraordinary journey of two brothers as they discover their hidden elemental powers and uncover ancient prophecies that will shape their destiny. 
+                This original web novel and manga series combines fantasy, adventure, and mystery in a world where powers have been resurrected and fate awaits at every turn.
+            </p>
         </div>
     </section>
 
     <!-- NEWS SECTION (Hidden) -->
-    <section class="content-section" id="news-section">
-        <h2 class="section-title">News</h2>
+    <section class="content-section" id="news-section" role="region" aria-labelledby="news-title">
+        <h2 class="section-title" id="news-title">News</h2>
         <div class="coming-soon-container">
             <div class="coming-soon-icon">📰</div>
             <h3>Coming Soon</h3>
@@ -839,139 +913,27 @@
     </section>
 
     <!-- FEEDBACK BUTTON -->
-    <button class="feedback-button" id="feedback-btn">💬 Feedback</button>
+    <button class="feedback-button" id="feedback-btn" aria-label="Open feedback form">💬 Feedback</button>
 
     <!-- FEEDBACK FORM -->
-    <div class="feedback-form" id="feedback-form">
-        <h3>Share Your Thoughts</h3>
-        <form id="feedback-form-element">
+    <div class="feedback-form" id="feedback-form" role="form" aria-labelledby="feedback-title">
+        <h3 id="feedback-title">Share Your Thoughts</h3>
+        <form id="feedback-form-element" method="POST" action="/api/feedback">
             <label for="feedback">Message</label>
-            <textarea id="feedback" placeholder="Your message..." rows="4"></textarea>
+            <textarea id="feedback" name="feedback" placeholder="Your message..." rows="4" required></textarea>
             
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="your@email.com" required>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
             
             <button type="submit">Submit</button>
         </form>
     </div>
 
     <!-- FOOTER -->
-    <footer>
+    <footer role="contentinfo">
         <p>&copy; 2025 Shreesh Kulkarni. All Rights Reserved.</p>
         <p>INTENTS is an Original Story. No Unauthorized Use.</p>
-        <p>Join us: #ThoseIntents #INTENTS</p>
+        <p>Join us: #ThoseIntents #INTENTS | <a href="https://twitter.com" style="color: var(--accent); text-decoration: underline;">Twitter</a> | <a href="https://instagram.com" style="color: var(--accent); text-decoration: underline;">Instagram</a></p>
     </footer>
 
     <script>
-        let previousSection = 'home-section';
-
-        // ===== MENU TOGGLE =====
-        const menuBtn = document.getElementById('menu-btn');
-        const sideMenu = document.getElementById('side-menu');
-        const menuOverlay = document.getElementById('menu-overlay');
-        const closeMenu = document.getElementById('close-menu');
-
-        menuBtn.addEventListener('click', () => {
-            if (sideMenu.classList.contains('active')) {
-                closeMenus();
-            } else {
-                sideMenu.classList.add('active');
-                menuOverlay.classList.add('active');
-            }
-        });
-
-        closeMenu.addEventListener('click', closeMenus);
-        menuOverlay.addEventListener('click', closeMenus);
-
-        function closeMenus() {
-            sideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        }
-
-        document.querySelectorAll('.menu-nav').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const sectionId = link.getAttribute('data-section');
-                showSection(sectionId);
-                closeMenus();
-            });
-        });
-
-        // ===== SECTION NAVIGATION =====
-        function showSection(sectionId) {
-            const currentActive = document.querySelector('.content-section.active');
-            if (currentActive) {
-                previousSection = currentActive.id;
-            }
-
-            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-            
-            document.body.classList.add('tab-switching');
-            setTimeout(() => {
-                document.body.classList.remove('tab-switching');
-            }, 700);
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        document.getElementById('home-tab').addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection('home-section');
-        });
-        document.getElementById('chapters-tab').addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection('chapters-section');
-        });
-        document.getElementById('about-tab').addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection('about-section');
-        });
-        document.getElementById('start-btn').addEventListener('click', () => showSection('about-section'));
-
-        // ===== FEEDBACK FORM =====
-        document.getElementById('feedback-btn').addEventListener('click', () => {
-            const form = document.getElementById('feedback-form');
-            form.classList.toggle('active');
-        });
-
-        document.getElementById('feedback-form-element').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const feedback = document.getElementById('feedback').value;
-            const email = document.getElementById('email').value;
-            
-            if (!feedback || !email) {
-                alert('Please fill in all fields!');
-                return;
-            }
-
-            try {
-                const response = await fetch('/api/feedback', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ feedback, email })
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    alert(data.message);
-                    document.getElementById('feedback-form-element').reset();
-                    document.getElementById('feedback-form').classList.remove('active');
-                } else {
-                    alert(data.error);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error submitting feedback. Please try again.');
-            }
-        });
-
-        // ===== INITIALIZATION =====
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('INTENTS website loaded successfully!');
-        });
-    </script>
-</body>
-</html>
