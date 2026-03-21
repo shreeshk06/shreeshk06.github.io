@@ -101,7 +101,6 @@
             position: relative;
         }
 
-        /* BACKGROUND VISUAL EFFECT */
         body::before {
             content: '';
             position: fixed;
@@ -135,7 +134,6 @@
             animation: floatBg 25s ease-in-out infinite reverse;
         }
 
-        /* HEADER */
         header {
             background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(15, 15, 15, 0.95) 100%);
             backdrop-filter: blur(20px);
@@ -148,14 +146,8 @@
         }
 
         @keyframes slideDownHeader {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         header nav {
@@ -230,15 +222,10 @@
             transition: width 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--white);
-        }
-
         nav a:hover::after {
             width: 100%;
         }
 
-        /* SIDE MENU */
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -355,7 +342,6 @@
             width: 100%;
         }
 
-        /* HERO SECTION */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -391,38 +377,24 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 140px;
-            font-weight: 900;
-            letter-spacing: 5px;
-            color: var(--white);
-            line-height: 1;
+        .hero-title-img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
             margin-bottom: 30px;
             animation: slideInDown 1s ease-out;
-            text-transform: uppercase;
-            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h2 {
@@ -454,14 +426,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .cta-button {
@@ -502,7 +468,6 @@
             left: 100%;
         }
 
-        /* CONTENT SECTIONS */
         .content-section {
             max-width: 1200px;
             margin: 120px auto;
@@ -519,17 +484,10 @@
         }
 
         @keyframes fadeInSection {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* TAB SWITCH ANIMATION */
         body.tab-switching::before {
             content: '';
             position: fixed;
@@ -544,17 +502,9 @@
         }
 
         @keyframes tabSwitchFlash {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
         }
 
         .section-title {
@@ -569,17 +519,10 @@
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* COMING SOON SECTION */
         .coming-soon-container {
             text-align: center;
             margin: 100px 0;
@@ -616,7 +559,6 @@
             text-align: center;
         }
 
-        /* ABOUT SECTION */
         .about-content {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -657,14 +599,8 @@
         }
 
         @keyframes breathe {
-            0%, 100% {
-                opacity: 0.8;
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-            }
-            50% {
-                opacity: 1;
-                text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-            }
+            0%, 100% { opacity: 0.8; text-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+            50% { opacity: 1; text-shadow: 0 0 40px rgba(255, 255, 255, 0.2); }
         }
 
         .hashtag {
@@ -673,7 +609,6 @@
             letter-spacing: 1px;
         }
 
-        /* FEEDBACK BUTTON & FORM */
         .feedback-button {
             position: fixed;
             right: 40px;
@@ -695,14 +630,8 @@
         }
 
         @keyframes slideInBottom {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .feedback-button:hover {
@@ -727,14 +656,8 @@
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .feedback-form.active {
@@ -803,7 +726,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        /* FOOTER */
         footer {
             background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 15, 0.98) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.03);
@@ -820,13 +742,13 @@
             font-weight: 300;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 60px; }
             nav ul { gap: 20px; }
             nav a { font-size: 10px; }
             .side-menu { width: 100%; left: -100%; }
             .about-content { padding: 40px 30px; }
+            .hero-title-img { max-width: 100%; }
         }
     </style>
 </head>
@@ -834,52 +756,45 @@
     <!-- HEADER -->
     <header>
         <nav>
-            <button class="logo-btn" id="menu-btn" aria-label="Open navigation menu">I</button>
+            <button class="logo-btn" id="menu-btn">I</button>
             <ul>
-                <li><a id="home-tab" role="button" tabindex="0">Home</a></li>
-                <li><a id="chapters-tab" role="button" tabindex="0">Chapters</a></li>
-                <li><a id="about-tab" role="button" tabindex="0">About</a></li>
+                <li><a id="home-tab">Home</a></li>
+                <li><a id="chapters-tab">Chapters</a></li>
+                <li><a id="about-tab">About</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- SIDE MENU -->
-    <div class="menu-overlay" id="menu-overlay" role="presentation"></div>
-    <div class="side-menu" id="side-menu" role="navigation" aria-label="Main navigation menu">
-        <button class="close-btn" id="close-menu" aria-label="Close navigation menu">✕</button>
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <div class="side-menu" id="side-menu">
+        <button class="close-btn" id="close-menu">✕</button>
         <h2 class="menu-title">Menu</h2>
-
         <div class="menu-section">
             <h3>Main</h3>
             <ul>
                 <li><a href="#" class="menu-nav" data-section="home-section">Home</a></li>
                 <li><a href="#" class="menu-nav" data-section="chapters-section">Chapters</a></li>
                 <li><a href="#" class="menu-nav" data-section="about-section">About</a></li>
-                <li><a href="#">News</a></li>
             </ul>
         </div>
-
         <div class="menu-section">
             <h3>Connect</h3>
             <ul>
-                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                <li><a href="mailto:contact@intents-story.com">Contact</a></li>
+                <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
             </ul>
         </div>
     </div>
 
     <!-- HERO SECTION -->
-    <section class="hero content-section active" id="home-section" role="main">
+    <section class="hero content-section active" id="home-section">
         <div class="hero-content">
-            <!-- Standard Image Display -->
-<img src="https://github.com" 
-     alt="Intents Diagram" 
-     style="width:100%; max-width:600px;">
-
+            <img 
+              src="https://raw.githubusercontent.com/shreeshk06/shreeshk06.github.io/main/IMG-20260125-WA0006.png" 
               alt="INTENTS" 
               class="hero-title-img"
-        
+            >
             <h2>An Original Story by Shreesh Kulkarni</h2>
             <p class="hero-tagline">Witness the convergence of power and destiny. And Their <strong>True</strong> <strong>INTENT</strong>ion<strong>S</strong></p>
             <button class="cta-button" id="start-btn">Begin The Journey</button>
@@ -887,60 +802,129 @@
     </section>
 
     <!-- CHAPTERS SECTION -->
-    <section class="content-section" id="chapters-section" role="region" aria-labelledby="chapters-title">
-        <h2 class="section-title" id="chapters-title">Chapters</h2>
+    <section class="content-section" id="chapters-section">
+        <h2 class="section-title">Chapters</h2>
         <div class="coming-soon-container">
             <div class="coming-soon-icon">⏳</div>
             <h3>Releasing Soon</h3>
-            <p>The first chapter of INTENTS is being meticulously crafted. Stay tuned for an extraordinary tale of elemental powers and ancient prophecies.</p>
+            <p>The first chapter of INTENTS is being meticulously crafted. Stay tuned for an extraordinary tale.</p>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="content-section" id="about-section" role="region" aria-labelledby="about-title">
+    <section class="content-section" id="about-section">
         <div class="about-content">
-            <h2 id="about-title">Journey Starting Soon</h2>
+            <h2>Journey Starting Soon</h2>
             <p class="journey-text">Get ready to embark on an unforgettable adventure with INTENTS...</p>
-            <p style="margin-top: 60px; text-align: center; font-size: 16px; letter-spacing: 1px;">Join the community. Become <span class="hashtag">#ThatMember</span> today.</p>
-            <p style="margin-top: 40px; color: var(--white-secondary); font-size: 14px; line-height: 1.8;">
-                INTENTS follows the extraordinary journey of two brothers as they discover their hidden elemental powers and uncover ancient prophecies that will shape their destiny. 
-                This original web novel and manga series combines fantasy, adventure, and mystery in a world where powers have been resurrected and fate awaits at every turn.
-            </p>
-        </div>
-    </section>
-
-    <!-- NEWS SECTION (Hidden) -->
-    <section class="content-section" id="news-section" role="region" aria-labelledby="news-title">
-        <h2 class="section-title" id="news-title">News</h2>
-        <div class="coming-soon-container">
-            <div class="coming-soon-icon">📰</div>
-            <h3>Coming Soon</h3>
-            <p>Stay tuned for the latest updates and announcements about INTENTS.</p>
+            <p style="margin-top: 60px; font-size: 16px;">Join the community. Become <span class="hashtag">#ThatMember</span> today.</p>
         </div>
     </section>
 
     <!-- FEEDBACK BUTTON -->
-    <button class="feedback-button" id="feedback-btn" aria-label="Open feedback form">💬 Feedback</button>
+    <button class="feedback-button" id="feedback-btn">💬 Feedback</button>
 
     <!-- FEEDBACK FORM -->
-    <div class="feedback-form" id="feedback-form" role="form" aria-labelledby="feedback-title">
-        <h3 id="feedback-title">Share Your Thoughts</h3>
-        <form id="feedback-form-element" method="POST" action="/api/feedback">
+    <div class="feedback-form" id="feedback-form">
+        <h3>Share Your Thoughts</h3>
+        <form id="feedback-form-element">
             <label for="feedback">Message</label>
-            <textarea id="feedback" name="feedback" placeholder="Your message..." rows="4" required></textarea>
-            
+            <textarea id="feedback" placeholder="Your message..." rows="4" required></textarea>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            
+            <input type="email" id="email" placeholder="your@email.com" required>
             <button type="submit">Submit</button>
         </form>
     </div>
 
     <!-- FOOTER -->
-    <footer role="contentinfo">
+    <footer>
         <p>&copy; 2025 Shreesh Kulkarni. All Rights Reserved.</p>
         <p>INTENTS is an Original Story. No Unauthorized Use.</p>
-        <p>Join us: #ThoseIntents #INTENTS | <a href="https://twitter.com" style="color: var(--accent); text-decoration: underline;">Twitter</a> | <a href="https://instagram.com" style="color: var(--accent); text-decoration: underline;">Instagram</a></p>
+        <p>Join us: #ThoseIntents #INTENTS</p>
     </footer>
 
     <script>
+        let previousSection = 'home-section';
+
+        const menuBtn = document.getElementById('menu-btn');
+        const sideMenu = document.getElementById('side-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const closeMenu = document.getElementById('close-menu');
+
+        menuBtn.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        document.querySelectorAll('.menu-nav').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('data-section');
+                showSection(sectionId);
+                sideMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.body.classList.add('tab-switching');
+            setTimeout(() => {
+                document.body.classList.remove('tab-switching');
+            }, 700);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('home-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('home-section');
+        });
+
+        document.getElementById('chapters-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('chapters-section');
+        });
+
+        document.getElementById('about-tab').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection('about-section');
+        });
+
+        document.getElementById('start-btn').addEventListener('click', () => {
+            showSection('about-section');
+        });
+
+        document.getElementById('feedback-btn').addEventListener('click', () => {
+            const form = document.getElementById('feedback-form');
+            form.classList.toggle('active');
+        });
+
+        document.getElementById('feedback-form-element').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const feedback = document.getElementById('feedback').value;
+            const email = document.getElementById('email').value;
+            
+            if (!feedback || !email) {
+                alert('Please fill in all fields!');
+                return;
+            }
+
+            alert('Thank you for your feedback!');
+            document.getElementById('feedback-form-element').reset();
+            document.getElementById('feedback-form').classList.remove('active');
+        });
+
+        console.log('INTENTS website loaded successfully!');
+    </script>
+</body>
+</html>
